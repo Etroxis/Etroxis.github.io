@@ -247,4 +247,33 @@ function persistentNotification() {
     alert('Notification API error: ' + err);
   }
 }
+
+
+
+function scheduleNotification() {
+  if (!('Notification' in window)) {
+    alert('Notification API not supported');
+    return;
+  }
+  if (!('showTrigger' in Notification.prototype)) {
+    alert('Notification Trigger API not supported');
+    return;
+  }
+  
+  Notification.requestPermission()
+    .then(() => {
+      if (Notification.permission !== 'granted') {
+        throw 'Notification permission is not granted';
+      }
+    })
+    .then(() => navigator.serviceWorker.getRegistration())
+    .then((reg) => {
+      reg.showNotification("Hi there from the past!", {
+          showTrigger: new TimestampTrigger(new Date().getTime() + 10 * 1000)
+      })
+    })
+    .catch((err) => {
+      alert('Notification Trigger API error: ' + err);
+    });
+  }
 }
