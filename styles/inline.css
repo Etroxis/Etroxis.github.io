@@ -404,3 +404,21 @@ body {
   .mdl-button--primary.mdl-button--primary.mdl-button--raised, .mdl-button--primary.mdl-button--primary.mdl-button--fab {
     color: white;
     background-color: #3f51b5; }
+
+    .btn-file {
+      position: relative;
+      overflow: hidden;
+      margin: 10px;
+  }
+  .btn-file input[type=file] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      min-width: 100%;
+      min-height: 100%;
+      opacity: 0;
+      outline: none;
+      background: #fff;
+      cursor: inherit;
+      display: block;
+  }
