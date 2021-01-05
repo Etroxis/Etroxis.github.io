@@ -445,3 +445,22 @@ body {
     top: 50px;
     left: 100px;
   }
+  @media (hover: hover) {
+    #tooltip {
+      display: none;
+    }
+    #button:hover ~ #tooltip {
+      display: block;
+    }
+  }
+  
+  @media (pointer: fine) {
+    #button {
+      font-size: x-small;
+    }
+  }
+  @media (pointer: coarse) {
+    #button {
+      font-size: x-large;
+    }
+  }
