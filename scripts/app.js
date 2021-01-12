@@ -144,4 +144,6 @@ function handleStateChange() {
 
 window.addEventListener('online', handleStateChange);
 
+document.getElementById('result').innerHTML = navigator.deviceMemory || 'unknown'
+
 }
