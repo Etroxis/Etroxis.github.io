@@ -158,26 +158,30 @@ function takePhoto() {
     })
     .catch(err => alert('Error: ' + err));
 }
-//device position
+// pwa
 
-if ('DeviceOrientationEvent' in window) {
-  window.addEventListener('deviceorientation', deviceOrientationHandler, false);
-} else {
-  document.getElementById('logoContainer').innerText = 'Device Orientation API not supported.';
-}
+var pwaCard = document.querySelector('#pwa');
+var pwaCardContent = pwaCard.querySelector('.card__content');
+var pwaCardDetails = pwaCard.querySelector('.card__details');
+var detailsShown = false;
 
-function deviceOrientationHandler (eventData) {
-  var tiltLR = eventData.gamma;
-  var tiltFB = eventData.beta;
-  var dir = eventData.alpha;
-  
-  document.getElementById("doTiltLR").innerHTML = Math.round(tiltLR);
-  document.getElementById("doTiltFB").innerHTML = Math.round(tiltFB);
-  document.getElementById("doDirection").innerHTML = Math.round(dir);
-
-  var logo = document.getElementById("imgLogo");
-  logo.style.webkitTransform = "rotate(" + tiltLR + "deg) rotate3d(1,0,0, " + (tiltFB * -1) + "deg)";
-  logo.style.MozTransform = "rotate(" + tiltLR + "deg)";
-  logo.style.transform = "rotate(" + tiltLR + "deg) rotate3d(1,0,0, " + (tiltFB * -1) + "deg)";
-}
+pwaCard.addEventListener('click', function (event) {
+  if (!detailsShown) {
+    detailsShown = true;
+    pwaCardContent.style.opacity = 0;
+    pwaCardDetails.style.display = 'block';
+    pwaCardContent.style.display = 'none';
+    setTimeout(function () {
+      pwaCardDetails.style.opacity = 1;
+    }, 300);
+  } else {
+    detailsShown = false;
+    pwaCardDetails.style.opacity = 0;
+    pwaCardContent.style.display = 'block';
+    pwaCardDetails.style.display = 'none';
+    setTimeout(function () {
+      pwaCardContent.style.opacity = 1;
+    }, 300);
+  }
+});
   }
