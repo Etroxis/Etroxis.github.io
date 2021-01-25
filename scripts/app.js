@@ -188,36 +188,14 @@ function takePhoto() {
 }
 
 //storage
-if ('storage' in navigator && 'estimate' in navigator.storage) {
-  navigator.storage.estimate()
-    .then(estimate => {
-      document.getElementById('usage').innerHTML = estimate.usage;
-      document.getElementById('quota').innerHTML = estimate.quota;
-      document.getElementById('percent').innerHTML = (estimate.usage * 100 / estimate.quota).toFixed(0);
-    });
+// Check if site's storage has been marked as persistent
+if (navigator.storage && navigator.storage.persist) {
+  const isPersisted = await navigator.storage.persisted();
+  console.log(`Persisted storage granted: ${isPersisted}`);
 }
-
-if ('storage' in navigator && 'persisted' in navigator.storage) {
-  navigator.storage.persisted()
-    .then(persisted => {
-      document.getElementById('persisted').innerHTML = persisted ? 'persisted' : 'not persisted';
-    });
+// Request persistent storage for site
+if (navigator.storage && navigator.storage.persist) {
+  const isPersisted = await navigator.storage.persist();
+  console.log(`Persisted storage granted: ${isPersisted}`);
 }
-
-function requestPersistence() {
-  if ('storage' in navigator && 'persist' in navigator.storage) {
-    navigator.storage.persist()
-      .then(persisted => {
-        document.getElementById('persisted').innerHTML = persisted ? 'persisted' : 'not persisted';
-      });
-  }
-}
-
-if (navigator.storage && navigator.storage.persist)
-  navigator.storage.persist().then(function(persistent) {
-    if (persistent)
-      console.log("Storage will not be cleared except by explicit user action");
-    else
-      console.log("Storage may be cleared by the UA under storage pressure.");
-  });
   }
