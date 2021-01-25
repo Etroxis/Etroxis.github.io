@@ -56,5 +56,5 @@ body, html {
   left: 15px;
   color: white;
   text-align: center;
-  -ms-touch-action: none;
+  -ms-touch-action: auto;
 }
