@@ -1,0 +1,13 @@
+#box {
+  width: 90px;
+  height: 20px;
+  background-color: green;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+#exit {
+  display: none;
+}

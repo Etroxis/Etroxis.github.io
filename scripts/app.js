@@ -99,4 +99,18 @@ function getStream (type) {
       alert('Error: ' + err);
     });
   }
+
+  //fullscreen
+  var $ = document.querySelector.bind(document);
+var $$ = function (selector) {
+  return [].slice.call(document.querySelectorAll(selector), 0);
+}
+var target = $('#logTarget');
+
+function logChange (event) {
+  var timeBadge = new Date().toTimeString().split(' ')[0];
+  var newState = document.createElement('p');
+  newState.innerHTML = '' + timeBadge + ' ' + event + '.';
+  target.appendChild(newState);
+}
   }
