@@ -27,7 +27,7 @@ var watchId;
     }
   }
 
-// geolocation
+  // geolocation
 
 var target = document.getElementById('target');
 var watchId;
@@ -48,8 +48,8 @@ if ('geolocation' in navigator) {
   });
 } else {
   target.innerText = 'Geolocation API not supported.';
-
 }
+
 
 // camera
 
