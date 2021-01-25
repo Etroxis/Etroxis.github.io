@@ -96,5 +96,7 @@ function getStream (type) {
       mediaControl.play();
     })
     .catch(function (err) {
-  
+      alert('Error: ' + err);
+    });
 }
+  }
